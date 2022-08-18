@@ -67,6 +67,7 @@ class circullar {
                     temp = temp->next;
                 }
             }
+            temp->quantity += quantity;
             if (temp->price > value) {
                 temp->price = value;
             }
