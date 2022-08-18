@@ -40,13 +40,36 @@ class circullar {
             struct Node* temp = *head;
             while (temp->name != name) {
                 if (temp->next == *head) {
-                    cout << "asda"; break;
+                    cout << "asda";
+                    Node* last = (*head)->prev;
+
+                    // Create Node dynamically
+                    struct Node* new_node = new Node;
+                    new_node->price = value;
+                    new_node->name = name;
+                    new_node->quantity = quantity;
+
+                    // Start is going to be next of new_node
+                    new_node->next = *head;
+
+                    // Make new node previous of start
+                    (*head)->prev = new_node;
+
+                    // Make last previous of new node
+                    new_node->prev = last;
+
+                    // Make new node next of old last
+                    last->next = new_node;
+                    break;
                    
                 }
                 else{
                     temp = temp->next;
                 }
-             }
+            }
+            if (temp->price > value) {
+                temp->price = value;
+            }
                 
            
 
@@ -61,25 +84,7 @@ class circullar {
             new_node->next = next;
             next->prev = new_node;
              Find last node */
-            Node* last = (*head)->prev;
-
-            // Create Node dynamically
-            struct Node* new_node = new Node;
-            new_node->price = value;
-            new_node->name = name;
-            new_node->quantity = quantity;
-
-            // Start is going to be next of new_node
-            new_node->next = *head;
-
-            // Make new node previous of start
-            (*head)->prev = new_node;
-
-            // Make last previous of new node
-            new_node->prev = last;
-
-            // Make new node next of old last
-            last->next = new_node;
+            
 
 
            
