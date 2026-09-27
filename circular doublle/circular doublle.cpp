@@ -40,7 +40,6 @@ class circullar {
             struct Node* temp = *head;
             while (temp->name != name) {
                 if (temp->next == *head) {
-                    cout << "asda";
                     Node* last = (*head)->prev;
 
                     // Create Node dynamically
@@ -60,7 +59,9 @@ class circullar {
 
                     // Make new node next of old last
                     last->next = new_node;
-                    break;
+                    // New item added; don't fall through to the merge below,
+                    // which would change the last existing item instead.
+                    return;
                    
                 }
                 else{
